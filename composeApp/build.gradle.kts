@@ -7,6 +7,7 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsCompose)
     alias(libs.plugins.compose.compiler)
+    alias(libs.plugins.realm.plugin)
 }
 
 kotlin {
@@ -50,6 +51,10 @@ kotlin {
             implementation(libs.navigator.transitions)
             implementation(libs.navigator.koin)
             implementation(libs.koin.core)
+
+            implementation(libs.mongodb.realm)
+            implementation(libs.kotlin.coroutines)
+            implementation(libs.stately.common)
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
