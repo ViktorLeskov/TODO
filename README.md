@@ -2,7 +2,7 @@
 
 This project is a fully Kotlin-based Multiplatform application designed to run seamlessly on Android, iOS, and Desktop. It leverages Kotlin's ability to share business logic and UI code across platforms, using the Compose Multiplatform for a unified UI experience. The project employs the Voyager library for navigation and MongoDB for database operations. Additionally, it incorporates ViewModel and Flow for state management and reactive programming.
 
-## Features
+## Tech Stack
 
 - **Kotlin Multiplatform**: Share code across Android, iOS, and Desktop.
 - **Compose Multiplatform**: Use a single codebase for building UIs across all platforms.
