@@ -8,6 +8,7 @@ import androidx.compose.runtime.mutableStateOf
 import cafe.adriel.voyager.navigator.Navigator
 import cafe.adriel.voyager.transitions.SlideTransition
 import data.MongoDB
+import di.initializeKoin
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.core.context.startKoin
 import org.koin.dsl.module
@@ -30,16 +31,4 @@ fun App() {
         }
     }
 
-}
-
-val mongoModule = module {
-    single { MongoDB() }
-    factory { HomeViewModel(get()) }
-    factory { TaskViewModel(get()) }
-}
-
-fun initializeKoin() {
-    startKoin {
-        modules(mongoModule)
-    }
 }
