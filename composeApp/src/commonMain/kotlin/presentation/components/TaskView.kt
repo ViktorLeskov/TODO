@@ -15,6 +15,9 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import domain.ToDoTask
 import kotlinproject.composeapp.generated.resources.Res
+import kotlinproject.composeapp.generated.resources.compose_multiplatform
+import kotlinproject.composeapp.generated.resources.delete
+import kotlinproject.composeapp.generated.resources.star
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.painterResource
 
