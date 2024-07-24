@@ -6,6 +6,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Edit
@@ -30,6 +32,9 @@ import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.core.screen.Screen
 import domain.RequestState
 import domain.ToDoTask
+import presentation.components.ErrorScreen
+import presentation.components.LoadingScreen
+import presentation.components.TaskView
 
 class HomeScreen : Screen {
     @OptIn(ExperimentalMaterial3Api::class)
@@ -60,7 +65,21 @@ class HomeScreen : Screen {
                         bottom = padding.calculateBottomPadding(),
                     )
             ) {
-
+                DisplayTasks(
+                    modifier = Modifier.weight(1f),
+                    tasks = RequestState.Idle,
+                    onSelect = { selectedTask -> },
+                    onFavorite = { task, favorite -> },
+                    onComplete = { task, completed -> }
+                )
+                Spacer(modifier = Modifier.height(24.dp))
+                DisplayTasks(
+                    modifier = Modifier.weight(1f),
+                    tasks = RequestState.Idle,
+                    showActive = false,
+                    onComplete = { task, completed -> },
+                    onDelete = { task -> }
+                )
             }
         }
     }
@@ -154,6 +173,6 @@ fun DisplayTasks(
                 } else {
                     ErrorScreen()
                 }
-            }
+            })
     }
 }
