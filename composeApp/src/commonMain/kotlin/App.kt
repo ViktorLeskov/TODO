@@ -7,12 +7,18 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import cafe.adriel.voyager.navigator.Navigator
 import cafe.adriel.voyager.transitions.SlideTransition
+import data.MongoDB
 import org.jetbrains.compose.ui.tooling.preview.Preview
+import org.koin.core.context.startKoin
+import org.koin.dsl.module
 import presentation.screen.home.HomeScreen
+import presentation.screen.home.HomeViewModel
+import presentation.screen.task.TaskViewModel
 
 @Composable
 @Preview
 fun App() {
+    initializeKoin()
 
     val colors by mutableStateOf(
         if(isSystemInDarkTheme()) darkColorScheme() else lightColorScheme()
@@ -24,4 +30,16 @@ fun App() {
         }
     }
 
+}
+
+val mongoModule = module {
+    single { MongoDB() }
+    factory { HomeViewModel(get()) }
+    factory { TaskViewModel(get()) }
+}
+
+fun initializeKoin() {
+    startKoin {
+        modules(mongoModule)
+    }
 }
